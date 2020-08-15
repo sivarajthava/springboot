@@ -1,0 +1,26 @@
+# Server Configuration
+server:
+   port: 8888
+
+# Application related configuration   
+spring:
+   application:
+      name: CustomerStatementReport
+   output:
+   ansi: 
+    enabled: DETECT
+   # Customer report uploaded process file configuration
+   servlet:
+      multipart:
+         enabled: true
+         max-file-size: 15MB		#The maximum size allowed for uploaded files, in bytes. If the size of any uploaded file is greater than this size, the web container will throw an exception
+         max-request-size: 15MB 	#The maximum size allowed for a multipart/form-data request, in bytes. The web container will throw an exception if the overall size of all uploaded files exceeds this threshold
+
+logging:
+ level:
+  root: DEBUG
+  org.springframework.web: ERROR
+  com.rabo.customer.statement: DEBUG		
+ pattern:
+  console: "[%-5level] %d{yyyy-MM-dd HH:mm:ss} fsreqid=%X{fsreqid} [%thread] %-5level %logger{36} - %msg%n"
+  file: "[%-5level] %d{yyyy-MM-dd HH:mm:ss} fsreqid=%X{fsreqid} [%thread] %-5level %logger{36} - %msg%n"
